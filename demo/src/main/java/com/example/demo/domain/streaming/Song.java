@@ -18,7 +18,7 @@ public class Song extends BaseTimeEntity{
     private String title;
 
     // 하나의 artist는 여러 곡을 가짐
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "artist_id")
     private Artist artist;
 

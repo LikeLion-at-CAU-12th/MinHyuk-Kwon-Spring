@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class Artist extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "altist_id")
+    @Column(name = "artist_id")
     private Long id;
 
     @Column(nullable = false)

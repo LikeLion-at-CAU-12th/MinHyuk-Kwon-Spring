@@ -14,7 +14,7 @@ public class Album extends BaseTimeEntity{
     @Column(name = "album_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "artist_id")
     private Artist artist;
 }
