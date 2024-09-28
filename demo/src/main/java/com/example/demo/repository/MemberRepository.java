@@ -11,9 +11,9 @@ import java.util.List;
 public class MemberRepository {
     @PersistenceContext
     EntityManager em;
-    public Long save(Member member) {
+    public Member save(Member member) {
         em.persist(member);
-        return member.getId();
+        return member;
     }
 
     public Member findOne(Long id) {
