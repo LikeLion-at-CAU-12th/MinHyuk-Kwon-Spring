@@ -17,7 +17,15 @@
 ![h2](https://i.postimg.cc/SxGHB4jQ/image.png)
 </details>
 
-4주차 과제
+<details>
+  <summary>4주차 과제</summary>
 1. 테스트 통과 화면
 [![image.png](https://i.postimg.cc/5N95V9KT/image.png)](https://postimg.cc/G9NTPRCx)
+</details>
+
+5주차 과제
+1. Delete
+[![image.png](https://i.postimg.cc/QCP3JgMq/image.png)](https://postimg.cc/zHn6JgKL)
+2. Patch
+[![image.png](https://i.postimg.cc/653V7rRm/image.png)](https://postimg.cc/Dm94Hbxr)
 
