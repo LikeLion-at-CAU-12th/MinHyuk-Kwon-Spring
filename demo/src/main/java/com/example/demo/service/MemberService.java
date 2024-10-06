@@ -16,11 +16,25 @@ import java.util.List;
 public class MemberService {
     private final MemberJpaRepository memberJpaRepository;
 
+    // Page단위로 Member를 반환하는 메서드
     public Page<Member> getMemberByPage(int page, int size) {
         Pageable pageable = PageRequest.of(page,size, Sort.by("username").ascending());
         return memberJpaRepository.findAll(pageable);
     }
 
+    // 특정 나이 이상인 경우만 조회하고, 이름을 기준으로 오름차순 정렬된 페이징 결과 반환
+    public Page<Member> getMembersByAgeGreaterThanEqual(int page, int size, int age) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("username").ascending());
+        return memberJpaRepository.findByAgeGreaterThanEqual(age, pageable);
+    }
+
+    // 이름이 주어진 값으로 시작하는 경우만 필터링하여 페이징 결과 반환
+    public Page<Member> getMembersByUsernameStartingWith(int page, int size, String target) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("username").ascending());
+        return memberJpaRepository.findByUsernameStartingWith(target, pageable);
+    }
+
+    // 특정 Page의 Member를 출력하는 메서드
     public void printMemberByPage(int page, int size) {
         Page<Member> memberPage = getMemberByPage(page, size);
         List<Member> members = memberPage.getContent();
@@ -29,5 +43,4 @@ public class MemberService {
             System.out.println("Id :"+member.getId() + ", Username : "+member.getUsername());
         }
     }
-
 }
