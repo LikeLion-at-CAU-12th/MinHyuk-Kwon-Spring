@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.request.ArticleCreateRequestDto;
+import com.example.demo.dto.request.ArticleUpdateRequestDto;
 import com.example.demo.dto.response.ArticleResponseDto;
 import com.example.demo.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,4 +32,18 @@ public class ArticleController {
         }
         return ResponseEntity.ok(articles);
     }
+
+    @DeleteMapping("/{articleId}")
+    public ResponseEntity<Long> deleteArticlesByArticleId(@PathVariable Long articleId) {
+        articleService.deleteArticle(articleId);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{articleId}")
+    public ResponseEntity<ArticleResponseDto> updateArticle(@PathVariable("articleId") Long articleId, @RequestBody ArticleUpdateRequestDto requestDto) {
+        ArticleResponseDto article = articleService.updateArticle(articleId, requestDto);
+        return ResponseEntity.ok(article);
+    }
+
 }

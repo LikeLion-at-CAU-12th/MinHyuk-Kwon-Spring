@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ArticleJpaReqpository extends JpaRepository<Article, Long> {
     List<Article> findByMemeberId(Long memberId);
+    void deleteById(Long articleId);
 }
