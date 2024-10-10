@@ -5,6 +5,10 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+### secret key ###
+application-SECRET-KEY.properties
+
+
 ### DS_Store ###
 .DS_Store
 ._.DS_Store
