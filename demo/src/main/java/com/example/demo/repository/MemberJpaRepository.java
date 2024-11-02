@@ -14,9 +14,14 @@ public interface MemberJpaRepository extends JpaRepository<Member, Long> { // (e
     // username으로 조회하는 queryMethod
     List<Member> findByUsername(String username);
 
+    Member findOneByUsername(String username);
+
     // 툭정 나이 이상인 Member 페이징 조회
     Page<Member> findByAgeGreaterThanEqual(int age, Pageable pageable);
 
     // 이름이 특정 문자열로 시작하는 Member 페이징 조회
     Page<Member> findByUsernameStartingWith(String target, Pageable pageable);
+
+    // 회원가입 로직
+    boolean existsByUsername(String username);
 }

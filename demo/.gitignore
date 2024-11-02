@@ -5,10 +5,15 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+<<<<<<< Updated upstream
 ### secret key ###
 application-SECRET-KEY.properties
 
 
+=======
+application-SECRET-KEY.properties
+
+>>>>>>> Stashed changes
 ### DS_Store ###
 .DS_Store
 ._.DS_Store

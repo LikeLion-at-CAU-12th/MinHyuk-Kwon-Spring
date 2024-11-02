@@ -1,12 +1,15 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Member;
+import com.example.demo.dto.request.JoinRequest;
 import com.example.demo.repository.MemberJpaRepository;
+import com.example.demo.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberJpaRepository memberJpaRepository;
+    private final MemberRepository memberRepository;
 
     // Page단위로 Member를 반환하는 메서드
     public Page<Member> getMemberByPage(int page, int size) {
@@ -43,4 +47,21 @@ public class MemberService {
             System.out.println("Id :"+member.getId() + ", Username : "+member.getUsername());
         }
     }
+
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public void join(JoinRequest joinRequest) {
+        if (memberJpaRepository.existsByUsername(joinRequest.getUsername())) {
+            return;
+        }
+
+        Member member = Member.builder()
+                .username(joinRequest.getUsername())
+                .password(bCryptPasswordEncoder.encode(joinRequest.getPassword()))
+                .build();
+
+        memberJpaRepository.save(member);
+    }
+
+
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 //Controller
 @RestController
 public class TestController {
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/test", method = RequestMethod.GET)
     public String test() {
         return "hello spring! this is test1 by RequestMapping with RequestMethod.GET";
     }
