@@ -51,17 +51,16 @@ public class MemberService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public void join(JoinRequest joinRequest) {
-        if (memberJpaRepository.existsByUsername(joinRequest.getUsername())) {
+        if (memberJpaRepository.existsByEmail(joinRequest.getEmail())) {
             return;
         }
 
         Member member = Member.builder()
                 .username(joinRequest.getUsername())
                 .password(bCryptPasswordEncoder.encode(joinRequest.getPassword()))
+                .email(joinRequest.getEmail())
                 .build();
 
         memberJpaRepository.save(member);
     }
-
-
 }

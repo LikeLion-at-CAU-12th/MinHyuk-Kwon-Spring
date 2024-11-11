@@ -2,14 +2,12 @@ package com.example.demo.domain;
 
 import com.example.demo.repository.MemberRepository;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Setter
 public class Member extends BaseTimeEntity{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
@@ -21,7 +19,9 @@ public class Member extends BaseTimeEntity{
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
     private String email;
+
     private int age;
 
     @Builder
